@@ -15,7 +15,7 @@ Tento, nem sempre consigo postar aqui. Normalmente prefiro estudar que mostrar o
 ## Contributors ✨
 
 Equipe:
-([emoji key](https://github.com/all-contributors/all-contributors#emoji-key)):
+https://vortex.unifor.br/
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
