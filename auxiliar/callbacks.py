@@ -11,13 +11,26 @@ from tensorflow.keras import backend as K
 
 
 '''
-callbacks sao algumas funcoes ja estabelecidas pelo keras que executam acoes enquanto o modelo treina. (podemos fazer uns customizados)
+usei so callback ja nativo do tf. callback é tipo umas funcoes ja feitas pra elas irem sendo chamadas enquanto treina.
+utilizei 5 de 4 modelos diferentes.
 
-1. `ModelCheckpoint`: salva os pesos do modelo durante o treinamento. configurei 2x. para salvar o melhor modelo (`save_best_only=True`) e periodicamente, no caso em 10 epocas (usando o parametro `period`).
-2. `EarlyStopping`: interrompe o treinamento se a perda de validacao nao melhorar apos um numero especifico de epocas (`patience`). pra nao overfittar e nao passar horas em treinamento que nao vai melhorar
-3. `ReduceLROnPlateau`: reduz a taxa de aprendizado quando a perda de validacao para de melhorar. as vezes o passo é grande demais e acaba preso sem conseguir achar o minimo
-4. `CSVLogger`: salva os resultados de cada epoca em um csv
+argumentos:
+    - dir_modelos_salvos: dir onde os modelos salvos serao armazenados.
+    - dir_csv_log: dir onde o log CSV sera salvo.
+    - check_best: flag para salvar o melhor modelo com base na validacao.
+    - early_stop: flag para usar o EarlyStopping.
+    - log: flag para salvar logs em um arquivo CSV.
+    - reduce_lr: flag para reduzir a taxa de aprendizado quando a validação não melhorar.
+    - check: flag para salvar modelos periodicamente.
+    - early_stop_epocas: quantas epocas sem melhorar pra parar o treinamento.
+    - check_epocas: numero de epocas para salvar modelos periodicamente.
+    - reduce_lr_epocas: quantas epocas sem melhorar pra reduzir.
+    - fator_reduce_lr: fator pelo qual a taxa de aprendizado será reduzida.
+
+retorna:
+    - callbacks: lista de callbacks configurados.
 '''
+
 
 def callbacks(dir_modelos_salvos, dir_csv_log, check_best, early_stop, log, reduce_lr, check, early_stop_epocas, check_epocas, reduce_lr_epocas, fator_reduce_lr):
     callbacks = []
@@ -35,7 +48,7 @@ def callbacks(dir_modelos_salvos, dir_csv_log, check_best, early_stop, log, redu
         callbacks.append(checkpoint_best)
         
     if check:
-        print('check 10')
+        print('check')
         checkpoint_15 = ModelCheckpoint(
             monitor='val_loss',
             filepath=dir_modelos_salvos,
