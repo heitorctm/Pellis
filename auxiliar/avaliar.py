@@ -6,21 +6,75 @@ import seaborn as sns
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
 
 
-def proximo_id(file_path):
-    df = pd.read_csv(file_path)
+
+'''
+criei vergonha na cara e automatizei a criacao dos ids pra nao precisar ficar se lembrando de mudar.
+isso é pra evitare os arquivos se sobrescreverem
+
+argumentos:
+    - dir: caminho do arquivo CSV contendo os ids das rodadas.
+
+retorna:
+    - id_rodada: próximo id_rodada disponivel.
+'''
+
+def proximo_id(dir):
+    df = pd.read_csv(dir)
     if df.empty:
         id_rodada = 1
     else:
         id_rodada = df['id_rodada'].max() + 1
     
     novo_id = pd.DataFrame({'id_rodada': [id_rodada]})
-    novo_id.to_csv(file_path, mode='a', header=False, index=False)
+    novo_id.to_csv(dir, mode='a', header=False, index=False)
     
     return id_rodada
 
 
+'''
+avalia o modelo salvo em diferentes rodadas de treinamento, salvando os resultados e previsões.
 
-def avaliar_modelo(model, rede, id_rodada, dataset_teste, dados_teste, batch_size, imagenet, data_aug, nome_otimizador, nome_loss, lr, attention, camada_pooling, flatten, denses, dropouts, tempo_treino):
+argumentos:
+    - model: modelo a ser avaliado.
+    - rede: nome da rede.
+    - id_rodada: identificador da rodada.
+    - dataset_teste: dataset de teste.
+    - dados_teste: dataframe contendo os dados de teste.
+    - batch_size: tamanho do batch.
+    - imagenet: se usei os pesos imagenet e quail foi 1k,21k.
+    - data_aug: flag indicando se augmentation foi usado.
+    - nome_otimizador: nome do otimizador.
+    - nome_loss: nome da função de perda.
+    - lr: taxa de aprendizado.
+    - attention: tipo de atenção usada.
+    - camada_pooling: tipo de camada de pooling usada.
+    - flatten: flag indicando se uma camada Flatten foi usada.
+    - denses: lista com o número de camada densa.
+    - dropouts: lista com as taxas de dropout correspondentes para cada camada densa.
+    - tempo_treino: tempo de treinamento. seg
+
+retorna:
+    - nenhum retorno, mas salva os resultados da avaliacao e previsoes em arquivos CSV. solid mandou lembranca
+'''
+
+def avaliar_modelo(
+        model, 
+        rede, 
+        id_rodada, 
+        dataset_teste, 
+        dados_teste, 
+        batch_size, 
+        imagenet, 
+        data_aug, 
+        nome_otimizador, 
+        nome_loss, lr, 
+        attention, 
+        camada_pooling, 
+        flatten, 
+        denses, 
+        dropouts, 
+        tempo_treino):
+    
     nomes_metricas = ['Loss', 'Accuracy', 'Precision', 'Recall', 'AUC']
     dir_modelos_salvos_para_teste = f'./redes/{rede}/modelos_salvos'
     resultados_lista = []
@@ -43,6 +97,7 @@ def avaliar_modelo(model, rede, id_rodada, dataset_teste, dados_teste, batch_siz
             chaves = ['arquivo', 'rede', 'imagenet', 'dataaug', 'otimizador', 'lossname', 'lr', 'attention', 'batchsize', 'pooling', 'flatten'] + \
                      [f'dense_{i+1}' for i in range(5)] + [f'dropout_{i+1}' for i in range(5)] + \
                      nomes_metricas + ['tempo_treino']
+            
             valores = [nome_modelo, rede, imagenet, data_aug, nome_otimizador, nome_loss, lr, attention, batch_size, camada_pooling, flatten] + \
                       densas_preenchidas + dropouts_preenchidos + \
                       resultados_teste_float + [tempo_treino]
@@ -55,6 +110,18 @@ def avaliar_modelo(model, rede, id_rodada, dataset_teste, dados_teste, batch_siz
     
     salvar_resultados(resultados_lista)
 
+
+'''
+argumentos:
+    - model: modelo a ser avaliado.
+    - dataset_teste: dataset de teste.
+    - dados_teste: dataframe contendo os dados de teste.
+    - nome_modelo: nome do modelo.
+    - batch_size: tamanho do batch.
+
+retorna:
+    - nenhum retorno, mas salva as previsões em um arquivo CSV.
+'''
 
 def salvar_previsoes(model, dataset_teste, dados_teste, nome_modelo, batch_size):
     
@@ -72,6 +139,22 @@ def salvar_previsoes(model, dataset_teste, dados_teste, nome_modelo, batch_size)
     resultados_df.to_csv(f'./log_teste/previsoes/resultados_{nome_modelo}.csv', index=False)
 
 
+'''
+nao to mais usando mas deixei ai pq acho bom ter.
+calcula as metricas manualmente a partir do csv. as vezes é bom a gente tirar do csv e nao encher o modelo de metrica,
+fica melhor pra quem vai usar nao precisar se preocupar em compilar tudo.
+
+argumentos:
+    - nome_modelo: nome do modelo.
+
+retorna:
+    - acc: acurácia.
+    - precision: precisão.
+    - recall: recall.
+    - f1: pontuação F1.
+    - roc_auc: area ROC.
+'''
+
 def calcular_metricas(nome_modelo):
     resultados_df = pd.read_csv(f'./log_teste/previsoes/resultados_{nome_modelo}.csv')
     y_true = resultados_df['real']
@@ -86,11 +169,29 @@ def calcular_metricas(nome_modelo):
     return acc, precision, recall, f1, roc_auc
 
 
+'''
+argumentos:
+    - resultados_lista: lista de dicionarios contendo os resultados da avaliação.
+
+retorna:
+    - nenhum retorno, mas salva os resultados em um arquivo CSV.
+'''
+
 def salvar_resultados(resultados_lista):
     log_teste_df = pd.DataFrame(resultados_lista)
     cabecalho = not os.path.isfile(f'./log_teste/log_teste.csv')
     log_teste_df.to_csv(f'./log_teste/log_teste.csv', mode='a', header=cabecalho, index=False)
 
+
+'''
+coloquei em %
+
+argumentos:
+    - nome_modelo: nome do modelo.
+
+retorna:
+    - nenhum retorno, mas exibe a matriz.
+'''
 
 def matriz_confusao(nome_modelo):
     resultados_df = pd.read_csv(f'./log_teste/previsoes/resultados_{nome_modelo}.csv')
