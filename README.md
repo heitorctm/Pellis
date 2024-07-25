@@ -16,7 +16,7 @@ Tento, nem sempre consigo postar aqui. Normalmente prefiro estudar que mostrar o
 
 Equipe:
 https://vortex.unifor.br/
-
+<td>
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -25,7 +25,7 @@ https://vortex.unifor.br/
 
       <td align="center" valign="top" width="14.28%"><img src="https://firebasestorage.googleapis.com/v0/b/doctor-bone.appspot.com/o/heitor.jpg?alt=media&token=d8fc2bef-3f69-4265-9b3a-acf403b1cccb)" width="100px;" alt="Heitor Teixeira"/><br /><sub><b>Heitor</b></sub></a><br /><a title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><img src="https://firebasestorage.googleapis.com/v0/b/doctor-bone.appspot.com/o/bigas.jpeg?alt=media&token=30b38afe-eea8-4c73-a87a-09472e299133" width="100px;" alt="Rodrigo big bigas"/><br /><sub><b>Rodrigo big biga</b></sub></a><br /><a title="Code">💻</a></td>
-       
+       </td>
 
   </tbody>
 </table>
