@@ -4,32 +4,17 @@
 <img src="https://cdn-icons-png.flaticon.com/512/394/394580.png" width=45 height=45>
 </div>
 
-An instantly ready, full-featured online IDE for web development on any device
-with a browser. Enabling you to start new projects quickly and prototype
-rapidly. With CodeSandbox, you can create web apps, experiment with code, test
-ideas, and share creations easily.
+Projeto de classificação de imagens de queimaduras utilizando redes neurais convolucionais. Ajustado para classificar cinco classes específicas. A abordagem inclui técnicas de fine-tuning e aumento de dados para melhorar a precisão e robustez do modelo.
 
-## Other CodeSandbox repositories
+## Outros repos
 
-CodeSandbox consists of several separate servers, some of which are open
-sourced.
+Tento, nem sempre consigo postar aqui. Normalmente prefiro estudar que mostrar os trabalhos
 
-- Client: the web application
-- Server: the [Phoenix](https://github.com/phoenixframework/phoenix) API server
-- Nginx: Nginx config files
-- [Git Extractor](https://github.com/codesandbox/codesandbox-importers):
-  responsible for extracting the source from a GitHub repository
-- [CLI](https://github.com/codesandbox/codesandbox-importers/tree/master/packages/cli):
-  the CLI to upload a CodeSandbox project from your command line
-
-## Documentation
-
-You can find our documentation on our
-[website](https://codesandbox.io/docs/learn/introduction/overview)
+- https://github.com/heitorctm/doctor_bone
 
 ## Contributors ✨
 
-Thanks goes to these wonderful people
+Equipe:
 ([emoji key](https://github.com/all-contributors/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
