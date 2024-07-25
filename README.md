@@ -1,6 +1,5 @@
 <p align="center">
-  <a href="https://codesandbox.io">
-    <img src="[https://codesandbox.io/static/img/banner.png?v=2](https://cdn-icons-png.flaticon.com/512/3304/3304516.png)" height="100px">
+      <img src="[https://codesandbox.io/static/img/banner.png?v=2](https://cdn-icons-png.flaticon.com/512/3304/3304516.png)" height="100px">
   </a>
 </p>
 
