@@ -7,7 +7,14 @@ from keras.applications.efficientnet_v2 import preprocess_input as preprocess_ef
 from tensorflow.keras.applications.resnet_v2 import preprocess_input as preprocess_resnet50v2
 from classification_models.keras import Classifiers
 
-
+'''
+argumentos:
+    - cnn: nome do modelo de rede.
+    
+retorna:
+    - preprocess_input: funcao de preprocessamento especifica da rede.
+    - tamanho: tamanho da imagem esperado pela rede.(nao precisa ser, mas existe o tamanho default na documentacao)
+'''
 
 def get_preprocess(cnn):
     if cnn == 'ResNeXt50':
@@ -40,6 +47,19 @@ data_augmentation = keras.Sequential(
     ]
 )
 
+
+'''
+argumentos:
+    - nome_do_arquivo: dir da imagem.
+    - label: label da imagem.
+    - preprocess_input: funcao de preprocessamento especifica da rede.
+    - img_tamanho: tamanho da imagem após redimensionamento.
+    
+retorna:
+    - imagem_normalizada: imagem processada e normalizada.(a normalizacao depende da rede.)
+    - label: label da imagem.
+'''
+
 def processar_imagem(nome_do_arquivo, label, preprocess_input, img_tamanho):
     nome_da_imagem = tf.io.read_file(nome_do_arquivo)
     imagem_decodificada = tf.image.decode_jpeg(nome_da_imagem, channels=3)
@@ -48,6 +68,23 @@ def processar_imagem(nome_do_arquivo, label, preprocess_input, img_tamanho):
     imagem_normalizada = preprocess_input(imagem_redimensionada)
 
     return imagem_normalizada, label
+
+
+'''
+dataset é o data loader do torch. conjunto estruturado e otimizado
+
+argumentos:
+    - dataframe: pandas dataframe contendo informacoes das imagens.
+    - diretorio: dir onde as imagens estão armazenadas.
+    - batch_size: tamanho do batch.
+    - rede: rede a ser utilizada.
+    - shuffle: flag indicando se o dataset deve ser embaralhado (default: False). usamos apenas em treinamento
+    - repeat: flag indicando se o dataset deve ser repetido indefinidamente (default: True).
+    - data_aug: flag indicando se a augmentation de dados deve ser aplicada (default: False).
+    
+retorna:
+    - dataset: dataset com as imagens processadas e configuradas.
+'''
 
 def criar_dataset(dataframe, diretorio, batch_size, rede, shuffle=False, repeat=True, data_aug=False):
     preprocess_input, img_tamanho = get_preprocess(rede)
