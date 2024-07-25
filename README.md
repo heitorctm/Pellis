@@ -23,8 +23,8 @@ Equipe:
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="http://ivesvh.com"><img src="https://avatars0.githubusercontent.com/u/587016?v=3?s=100" width="100px;" alt="Ives van Hoorne"/><br /><sub><b>Ives van Hoorne</b></sub></a><br /><a href="#question-CompuIves" title="Answering Questions">💬</a> <a href="#blog-CompuIves" title="Blogposts">📝</a> <a href="https://github.com/codesandbox/codesandbox-client/issues?q=author%3ACompuIves" title="Bug reports">🐛</a> <a href="https://github.com/codesandbox/codesandbox-client/commits?author=CompuIves" title="Code">💻</a> <a href="#design-CompuIves" title="Design">🎨</a> <a href="https://github.com/codesandbox/codesandbox-client/commits?author=CompuIves" title="Documentation">📖</a> <a href="#example-CompuIves" title="Examples">💡</a> <a href="#infra-CompuIves" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/codesandbox/codesandbox-client/pulls?q=is%3Apr+reviewed-by%3ACompuIves" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/codesandbox/codesandbox-client/commits?author=CompuIves" title="Tests">⚠️</a> <a href="#tool-CompuIves" title="Tools">🔧</a></td>
-      <td align="center" valign="top" width="14.28%"><img src="https://firebasestorage.googleapis.com/v0/b/doctor-bone.appspot.com/o/bigas.jpeg?alt=media&token=30b38afe-eea8-4c73-a87a-09472e299133" width="100px;" alt="Donavon West"/><br /><sub><b>Donavon West</b></sub></a><br /><a href="https://github.com/codesandbox/codesandbox-client/commits?author=donavon" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><img src="https://firebasestorage.googleapis.com/v0/b/doctor-bone.appspot.com/o/heitor.jpg?alt=media&token=d8fc2bef-3f69-4265-9b3a-acf403b1cccb)" width="100px;" alt="Heitor Teixeira"/><br /><sub><b>Heitor</b></sub></a><br /><a title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><img src="https://firebasestorage.googleapis.com/v0/b/doctor-bone.appspot.com/o/bigas.jpeg?alt=media&token=30b38afe-eea8-4c73-a87a-09472e299133" width="100px;" alt="Rodrigo big bigas"/><br /><sub><b>Rodrigo big biga</b></sub></a><br /><a title="Code">💻</a></td>
        
     </tr>
   </tbody>
@@ -34,10 +34,3 @@ Equipe:
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-
-## Thanks
-
-<a href="https://www.chromaticqa.com/"><img src="https://cdn-images-1.medium.com/letterbox/147/36/50/50/1*oHHjTjInDOBxIuYHDY2gFA.png?source=logoAvatar-d7276495b101---37816ec27d7a" width="120"/></a>
-
-Thanks to [Chromatic](https://www.chromaticqa.com/) for providing the visual
-testing platform that helps us catch unexpected changes.
