@@ -4,7 +4,7 @@
 <img src="https://cdn-icons-png.flaticon.com/512/394/394580.png" width=45 height=45>
 </div>
 
-Projeto de classificação de imagens de queimaduras utilizando redes neurais convolucionais. Ajustado para classificar cinco classes específicas. A abordagem inclui técnicas de fine-tuning e aumento de dados para melhorar a precisão e robustez do modelo.
+Projeto de classificação de imagens de queimaduras utilizando redes neurais convolucionais. Ajustado para classificar cinco classes específicas. A abordagem inclui técnicas de fine-tuning e aumento de dados para melhorar a acc e robustez dos modelos treinados.
 
 ## Outros repos
 
